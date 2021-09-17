@@ -95,10 +95,14 @@ public class LevelManager : MonoBehaviour
                     enemy.gameObject.SetActive(false);
                 }
             } else {
-                enemy.CheckNearbyTower(_spawnedTowers);
-                enemy.SeekTarget();
-                enemy.ShootTarget();
                 enemy.MoveToTarget();
+                if (enemy.CanAttack) {
+                    enemy.CheckNearbyTower(_spawnedTowers);
+                    enemy.SeekTarget();
+                    enemy.ShootTarget();
+                }
+                
+                
             }
 
         }
@@ -168,6 +172,7 @@ public class LevelManager : MonoBehaviour
                 _spawnedEnemies.Add(newEnemy);
             }
 
+            newEnemy.SetEnemyCanAttack(false);
             newEnemy.transform.position = _enemyPaths[lastPath-1].position;
             newEnemy.SetTargetPos(_enemyPaths[lastPath].position);
             newEnemy.SetCurrentPathIndex(lastPath);

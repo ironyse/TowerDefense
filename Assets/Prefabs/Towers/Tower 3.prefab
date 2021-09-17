@@ -58,6 +58,11 @@ PrefabInstance:
       propertyPath: _healthFill
       value: 
       objectReference: {fileID: 4460420454809615582}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _shootDelay
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3398961711962099178, guid: 4c51351ec37be624caa41a9ba16a79a6,
         type: 3}
       propertyPath: m_Sprite

@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
     public Vector3 TargetPos { get; private set; }
     public int CurrentPathIndex { get; private set; }
-    public bool CanAttack { get { return _canAttacking; } }    
+    public bool CanAttack { get { return _canAttacking; }  }    
 
     // method from monobehavior, called everytime gameobject is enabled
     private void OnEnable(){
@@ -37,9 +37,13 @@ public class Enemy : MonoBehaviour
         _healthFill.size = _healthBar.size;
     }
 
+    public void SetEnemyCanAttack(bool canAttack){
+        _canAttacking = canAttack;
+    }
+
     public void MoveToTarget(){
         transform.position = Vector3.MoveTowards(transform.position, TargetPos, _moveSpeed * Time.deltaTime);
-    }
+    }    
 
     public void SetTargetPos(Vector3 targetPos){
         TargetPos = targetPos;
@@ -85,7 +89,7 @@ public class Enemy : MonoBehaviour
             AudioPlayer.Instance.PlaySFX("enemy-die");
             if (_canSpawningEnemies)
             {
-                LevelManager.Instance.SpawnEnemyType(_spawnedType,_spawnNumber, CurrentPathIndex);
+                LevelManager.Instance.SpawnEnemyType(_spawnedType, _spawnNumber, CurrentPathIndex);
             }
         }
         float fillRatio = (float) _currentHealth / _maxHealth;
