@@ -95,6 +95,9 @@ public class LevelManager : MonoBehaviour
                     enemy.gameObject.SetActive(false);
                 }
             } else {
+                enemy.CheckNearbyTower(_spawnedTowers);
+                enemy.SeekTarget();
+                enemy.ShootTarget();
                 enemy.MoveToTarget();
             }
 
@@ -102,9 +105,11 @@ public class LevelManager : MonoBehaviour
 
 
         foreach(Tower tower in _spawnedTowers) {
-            tower.CheckNearbyEnemy(_spawnedEnemies);
-            tower.SeekTarget();
-            tower.ShootTarget();
+            if (tower.gameObject.activeSelf) {
+                tower.CheckNearbyEnemy(_spawnedEnemies);
+                tower.SeekTarget();
+                tower.ShootTarget();
+            }            
         }
         
     }
@@ -119,7 +124,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void SpawnEnemy() {
+    void SpawnEnemy(int lastPath = 0) {
         SetTotalEnemy(--_totalEnemy);
         if (_enemyCounter < 0) {
             bool isAllEnemyDestroyed = _spawnedEnemies.Find(e => e.gameObject.activeSelf) == null;
@@ -140,10 +145,14 @@ public class LevelManager : MonoBehaviour
         Enemy newEnemy = newEnemyObj.GetComponent<Enemy>();
         if (!_spawnedEnemies.Contains(newEnemy)) _spawnedEnemies.Add(newEnemy);
 
-        newEnemy.transform.position = _enemyPaths[0].position;
-        newEnemy.SetTargetPos(_enemyPaths[1].position);
-        newEnemy.SetCurrentPathIndex(1);
+        newEnemy.transform.position = _enemyPaths[lastPath].position;
+        newEnemy.SetTargetPos(_enemyPaths[lastPath+1].position);
+        newEnemy.SetCurrentPathIndex(lastPath+1);
         newEnemy.gameObject.SetActive(true);
+    }
+
+    public void SpawnEnemyType(int lastPath) {
+
     }
 
     void RechargeEnergy(){
@@ -152,6 +161,11 @@ public class LevelManager : MonoBehaviour
 
     public void RegisterSpawnedTower(Tower tower) {
         _spawnedTowers.Add(tower);
+        
+    }
+
+    public void UnRegisterSpawnedTower(Tower tower) {
+        _spawnedTowers.Remove(tower);
     }
 
     public Bullet GetBulletFromPool(Bullet prefab) {

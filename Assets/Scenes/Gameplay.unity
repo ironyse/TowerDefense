@@ -537,7 +537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 225, y: -75}
+  m_AnchoredPosition: {x: 225, y: -50}
   m_SizeDelta: {x: 400, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &599551797
@@ -928,6 +928,7 @@ MonoBehaviour:
   _enemyPrefabs:
   - {fileID: 3779510395728427100, guid: 7233c5d046cd49647a1f5dd5eed7f10b, type: 3}
   - {fileID: 894523277870310888, guid: c76f132128d62d64781b22a920962907, type: 3}
+  - {fileID: 2230611273893941381, guid: b7cdec77f39be7e44a5f75e38fc6a701, type: 3}
   _enemyPaths:
   - {fileID: 1634252942}
   - {fileID: 660636428}
@@ -941,7 +942,7 @@ MonoBehaviour:
   - {fileID: 1117920960}
   - {fileID: 1270630989}
   _spawnDelay: 5
-  _energyRechargeDelay: 2.5
+  _energyRechargeDelay: 4
   _shownedEnergy:
   - {fileID: 448566647438765343}
   - {fileID: 1349132934}

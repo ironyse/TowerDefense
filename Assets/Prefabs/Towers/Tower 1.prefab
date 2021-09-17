@@ -103,6 +103,26 @@ PrefabInstance:
       propertyPath: _energyCost
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _maxHealth
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _healthBar
+      value: 
+      objectReference: {fileID: 8276279273071530083}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _healthFill
+      value: 
+      objectReference: {fileID: 2623846962322515512}
+    - target: {fileID: 7603731793075803312, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c51351ec37be624caa41a9ba16a79a6, type: 3}
 --- !u!212 &375371009007167937 stripped
@@ -114,6 +134,18 @@ SpriteRenderer:
 --- !u!212 &8346759423828684245 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3398961711962099178, guid: 4c51351ec37be624caa41a9ba16a79a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6700842576906575935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8276279273071530083 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3325183695128571996, guid: 4c51351ec37be624caa41a9ba16a79a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6700842576906575935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2623846962322515512 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8689671545736185351, guid: 4c51351ec37be624caa41a9ba16a79a6,
     type: 3}
   m_PrefabInstance: {fileID: 6700842576906575935}
   m_PrefabAsset: {fileID: 0}

@@ -6,19 +6,23 @@ public class Tower : MonoBehaviour
     // Component
     [SerializeField] private SpriteRenderer _towerPlace;
     [SerializeField] private SpriteRenderer _towerHead;
+    [SerializeField] private SpriteRenderer _healthBar;
+    [SerializeField] private SpriteRenderer _healthFill;
 
     // Properti
     [SerializeField] private int _energyCost = 1; // cost for build tower
+    [SerializeField] private int _maxHealth = 1;
     [SerializeField] private int _shootPower = 1;
     [SerializeField] private float _shootDistance = 1f;
     [SerializeField] private float _shootDelay = 5f;
     [SerializeField] private float _bulletSpeed = 1f;
-    [SerializeField] private float _bulletSplashRadius = 0f;    
+    [SerializeField] private float _bulletSplashRadius = 0f;
 
     [SerializeField] private Bullet _bulletPrefab;
     private float _runningShootDelay;
     private Enemy _targetEnemy;
     private Quaternion _targetRotation;
+    private int _currentHealth;
 
     public int EnergyCost { get { return _energyCost; } }
 
@@ -34,12 +38,28 @@ public class Tower : MonoBehaviour
 
     public void LockPlacement() {
         transform.position = (Vector2)PlacePos;
+        _currentHealth = _maxHealth;
+        _healthFill.size = _healthBar.size;
     }
 
     public void ToggleOrderInLayer(bool toFront) {
         int orderInLayer = toFront ? 2 : 0;
         _towerPlace.sortingOrder = orderInLayer;
         _towerHead.sortingOrder = orderInLayer;
+    }
+
+    public void ReduceHealth(int damage) {
+        _currentHealth -= damage;
+        
+        if(_currentHealth <= 0) {
+            _currentHealth = 0;
+            gameObject.SetActive(false);
+            LevelManager.Instance.UnRegisterSpawnedTower(transform.GetComponent<Tower>());
+            
+        }
+
+        float fillRatio = (float)_currentHealth / _maxHealth;
+        _healthFill.size = new Vector2(fillRatio * _healthBar.size.x, _healthBar.size.y);
     }
 
     public void CheckNearbyEnemy(List<Enemy> enemies) { 

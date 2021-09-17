@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
@@ -8,24 +6,24 @@ public class Bullet : MonoBehaviour
     private float _bulletSpeed;
     private float _bulletSplashRadius;
 
-    private Enemy _targetEnemy;
+    private dynamic _bulletTarget;
 
     private void FixedUpdate(){
 
         if (LevelManager.Instance.IsOver) return; //Skip code block if Is Over
 
-        if (_targetEnemy != null) { 
+        if (_bulletTarget != null) { 
 
-            if (!_targetEnemy.gameObject.activeSelf) {
+            if (!_bulletTarget.gameObject.activeSelf || _bulletTarget == null) {
 
                 gameObject.SetActive(false);
-                _targetEnemy = null;
+                _bulletTarget = null;
                 return;
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, _targetEnemy.transform.position, _bulletSpeed * Time.fixedDeltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _bulletTarget.transform.position, _bulletSpeed * Time.fixedDeltaTime);
 
-            Vector3 direction = _targetEnemy.transform.position - transform.position;
+            Vector3 direction = _bulletTarget.transform.position - transform.position;
             float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, targetAngle - 90f));
 
@@ -33,18 +31,18 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (_targetEnemy == null) return;
+        if (_bulletTarget == null) return;
 
-        if (collision.gameObject.Equals(_targetEnemy.gameObject)) {
+        if (collision.gameObject.Equals(_bulletTarget.gameObject)) {
             gameObject.SetActive(false);
 
-            if (_bulletSplashRadius > 0f) { 
-                // create explode 
+            if (_bulletSplashRadius > 0f) {
+                LevelManager.Instance.ExplodeAt(transform.position, _bulletSplashRadius, _bulletPower);
             } else {
-                _targetEnemy.ReduceHealth(_bulletPower);
+                _bulletTarget.ReduceHealth(_bulletPower);
             }
 
-            _targetEnemy = null;
+            _bulletTarget = null;
 
         }
     }
@@ -56,6 +54,11 @@ public class Bullet : MonoBehaviour
     }
 
     public void SetTargetEnemy(Enemy enemy) {
-        _targetEnemy = enemy;
+        _bulletTarget = enemy;
+    }
+
+    public void SetTargetTower(Tower tower)
+    {
+        _bulletTarget = tower;
     }
 }
