@@ -1043,6 +1043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc19f25e91265f44a972b19e130d86ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _placedTower: {fileID: 0}
 --- !u!61 &712525257
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1278,6 +1279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc19f25e91265f44a972b19e130d86ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _placedTower: {fileID: 0}
 --- !u!61 &753275380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2280,7 +2282,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!224 &1276426775
 RectTransform:
@@ -3074,6 +3076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc19f25e91265f44a972b19e130d86ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _placedTower: {fileID: 0}
 --- !u!61 &1826920946
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3193,6 +3196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc19f25e91265f44a972b19e130d86ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _placedTower: {fileID: 0}
 --- !u!61 &1830235840
 BoxCollider2D:
   m_ObjectHideFlags: 0

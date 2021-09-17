@@ -67,7 +67,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 9576d2b078928154f960dfc2754e0a3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -147,7 +147,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4b6a5589e6374664a913f75e203fb53c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -197,6 +197,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _maxHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _healthBar
+      value: 
+      objectReference: {fileID: 7221854726038507464}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _healthFill
+      value: 
+      objectReference: {fileID: 5101320875775838558}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _isAttacking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _isSpawningEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _spawnNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _spawnedType
+      value: 
+      objectReference: {fileID: 3779510395728427100, guid: 7233c5d046cd49647a1f5dd5eed7f10b,
+        type: 3}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 2906821067290923248, guid: 1f89242fc8e06ea429fb0a43cfb357dd,
+        type: 3}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _canAttacking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _canRunAndGun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _canSpawningEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _moveSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _shootPower
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _shootDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _shootDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _bulletSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _enemyHead
+      value: 
+      objectReference: {fileID: 3934941778589763057}
+    - target: {fileID: 9123141888111386301, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ff1928f3ca6411447a74eafb7d0438d5,
+        type: 3}
     - target: {fileID: 8925581859820487349, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -252,99 +345,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9123141888111386301, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ff1928f3ca6411447a74eafb7d0438d5,
-        type: 3}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _maxHealth
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _healthBar
-      value: 
-      objectReference: {fileID: 7221854726038507464}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _healthFill
-      value: 
-      objectReference: {fileID: 5101320875775838558}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _isAttacking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _isSpawningEnemies
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _spawnNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _spawnedType
-      value: 
-      objectReference: {fileID: 3779510395728427100, guid: 7233c5d046cd49647a1f5dd5eed7f10b,
-        type: 3}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _bulletPrefab
-      value: 
-      objectReference: {fileID: 2906821067290923248, guid: 1f89242fc8e06ea429fb0a43cfb357dd,
-        type: 3}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _canAttacking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _canRunAndGun
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _canSpawningEnemies
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _moveSpeed
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _shootPower
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _shootDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _shootDelay
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _bulletSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
-        type: 3}
-      propertyPath: _enemyHead
-      value: 
-      objectReference: {fileID: 3934941778589763057}
     - target: {fileID: 4802042012803343255, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}
       propertyPath: m_Name

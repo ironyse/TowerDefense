@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
 
     // enemy behavior type
     [SerializeField] private bool _canAttacking = false;
-    [SerializeField] private bool _canRunAndGun = false;
     [SerializeField] private bool _canSpawningEnemies = false;
     [SerializeField] private int _spawnNumber = 0;
     [SerializeField] private Enemy _spawnedType;
@@ -30,8 +29,7 @@ public class Enemy : MonoBehaviour
 
     public Vector3 TargetPos { get; private set; }
     public int CurrentPathIndex { get; private set; }
-    public bool CanAttack { get { return _canAttacking; } }
-    public bool CanRunAndGun { get { return _canRunAndGun; } }
+    public bool CanAttack { get { return _canAttacking; } }    
 
     // method from monobehavior, called everytime gameobject is enabled
     private void OnEnable(){
@@ -85,6 +83,10 @@ public class Enemy : MonoBehaviour
             _currentHealth = 0;
             gameObject.SetActive(false);
             AudioPlayer.Instance.PlaySFX("enemy-die");
+            if (_canSpawningEnemies)
+            {
+                LevelManager.Instance.SpawnEnemyType(_spawnedType,_spawnNumber, CurrentPathIndex);
+            }
         }
         float fillRatio = (float) _currentHealth / _maxHealth;
         _healthFill.size = new Vector2(fillRatio * _healthBar.size.x, _healthBar.size.y);

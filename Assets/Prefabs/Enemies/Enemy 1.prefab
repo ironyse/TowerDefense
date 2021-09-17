@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!58 &4725054271390696116
+--- !u!58 &130
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,12 +97,12 @@ PrefabInstance:
     - target: {fileID: 8925581859820487349, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5.576232
       objectReference: {fileID: 0}
     - target: {fileID: 8925581859820487349, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.4398863
       objectReference: {fileID: 0}
     - target: {fileID: 8925581859820487349, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}
@@ -122,12 +122,12 @@ PrefabInstance:
     - target: {fileID: 8925581859820487349, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.49659497
       objectReference: {fileID: 0}
     - target: {fileID: 8925581859820487349, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.86798245
       objectReference: {fileID: 0}
     - target: {fileID: 8925581859820487349, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}

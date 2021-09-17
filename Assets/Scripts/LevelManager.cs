@@ -143,7 +143,9 @@ public class LevelManager : MonoBehaviour
         }
 
         Enemy newEnemy = newEnemyObj.GetComponent<Enemy>();
-        if (!_spawnedEnemies.Contains(newEnemy)) _spawnedEnemies.Add(newEnemy);
+        if (!_spawnedEnemies.Contains(newEnemy)) { 
+            _spawnedEnemies.Add(newEnemy); 
+        }
 
         newEnemy.transform.position = _enemyPaths[lastPath].position;
         newEnemy.SetTargetPos(_enemyPaths[lastPath+1].position);
@@ -151,7 +153,27 @@ public class LevelManager : MonoBehaviour
         newEnemy.gameObject.SetActive(true);
     }
 
-    public void SpawnEnemyType(int lastPath) {
+    public void SpawnEnemyType(Enemy enemy, int spawnNumber, int lastPath) {
+        for(int i=0; i<spawnNumber; i++)
+        {
+            GameObject newEnemyObj = _spawnedEnemies.Find(e => !e.gameObject.activeSelf && e.name.Contains(enemy.name))?.gameObject;
+
+            if (newEnemyObj == null)
+            {
+                newEnemyObj = Instantiate(enemy.gameObject);
+            }
+            Enemy newEnemy = newEnemyObj.GetComponent<Enemy>();
+            if (!_spawnedEnemies.Contains(newEnemy))
+            {
+                _spawnedEnemies.Add(newEnemy);
+            }
+
+            newEnemy.transform.position = _enemyPaths[lastPath-1].position;
+            newEnemy.SetTargetPos(_enemyPaths[lastPath].position);
+            newEnemy.SetCurrentPathIndex(lastPath);
+            newEnemy.gameObject.SetActive(true);
+
+        }        
 
     }
 
