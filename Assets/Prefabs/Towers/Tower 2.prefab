@@ -12,6 +12,53 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _shootDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _shootDelay
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _towerPlace
+      value: 
+      objectReference: {fileID: 6141633202558330016}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _towerHead
+      value: 
+      objectReference: {fileID: 2583736133843296436}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 7708920203761876422, guid: 55ffb7f700a4bce4a8035f9deb6521ef,
+        type: 3}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _maxHealth
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _healthBar
+      value: 
+      objectReference: {fileID: 2510091640148499714}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _healthFill
+      value: 
+      objectReference: {fileID: 8387714350849813337}
+    - target: {fileID: 3398961711962099178, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9fae13385e3d16a4481c43433e1f5198,
+        type: 3}
     - target: {fileID: 6844284719803816028, guid: 4c51351ec37be624caa41a9ba16a79a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,53 +114,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _shootDistance
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _shootDelay
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _towerPlace
-      value: 
-      objectReference: {fileID: 6141633202558330016}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _towerHead
-      value: 
-      objectReference: {fileID: 2583736133843296436}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _bulletPrefab
-      value: 
-      objectReference: {fileID: 7708920203761876422, guid: 55ffb7f700a4bce4a8035f9deb6521ef,
-        type: 3}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _maxHealth
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _healthBar
-      value: 
-      objectReference: {fileID: 2510091640148499714}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _healthFill
-      value: 
-      objectReference: {fileID: 8387714350849813337}
-    - target: {fileID: 3398961711962099178, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9fae13385e3d16a4481c43433e1f5198,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c51351ec37be624caa41a9ba16a79a6, type: 3}
 --- !u!212 &6141633202558330016 stripped

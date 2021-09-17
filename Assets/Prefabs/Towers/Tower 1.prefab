@@ -12,6 +12,57 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _shootPower
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _shootDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _towerPlace
+      value: 
+      objectReference: {fileID: 375371009007167937}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _towerHead
+      value: 
+      objectReference: {fileID: 8346759423828684245}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _shootDelay
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 7708920203761876422, guid: 55ffb7f700a4bce4a8035f9deb6521ef,
+        type: 3}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _energyCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _maxHealth
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _healthBar
+      value: 
+      objectReference: {fileID: 8276279273071530083}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _healthFill
+      value: 
+      objectReference: {fileID: 2623846962322515512}
     - target: {fileID: 6844284719803816028, guid: 4c51351ec37be624caa41a9ba16a79a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,57 +118,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _shootPower
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _shootDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _towerPlace
-      value: 
-      objectReference: {fileID: 375371009007167937}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _towerHead
-      value: 
-      objectReference: {fileID: 8346759423828684245}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _shootDelay
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _bulletPrefab
-      value: 
-      objectReference: {fileID: 7708920203761876422, guid: 55ffb7f700a4bce4a8035f9deb6521ef,
-        type: 3}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _energyCost
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _maxHealth
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _healthBar
-      value: 
-      objectReference: {fileID: 8276279273071530083}
-    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
-        type: 3}
-      propertyPath: _healthFill
-      value: 
-      objectReference: {fileID: 2623846962322515512}
     - target: {fileID: 7603731793075803312, guid: 4c51351ec37be624caa41a9ba16a79a6,
         type: 3}
       propertyPath: m_IsActive

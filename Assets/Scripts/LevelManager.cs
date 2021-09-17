@@ -45,6 +45,9 @@ public class LevelManager : MonoBehaviour
     private int _enemyCounter;
     private float _runningSpawnDelay;
     private float _runningRechargeDelay;
+
+    private bool waitForSpace = false;
+    public Transform startPanel;
     
     public int CurrentEnergy { get; private set; }
     public bool IsOver { get; private set; }
@@ -58,6 +61,13 @@ public class LevelManager : MonoBehaviour
     }
         
     void Update(){
+        if (Input.GetKeyDown(KeyCode.Space) && !waitForSpace)
+        {
+            waitForSpace = true;
+            startPanel.gameObject.SetActive(false);
+        }
+
+        if (!waitForSpace) return;
 
         if (Input.GetKeyDown(KeyCode.R)) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -166,16 +176,17 @@ public class LevelManager : MonoBehaviour
             {
                 newEnemyObj = Instantiate(enemy.gameObject);
             }
+
             Enemy newEnemy = newEnemyObj.GetComponent<Enemy>();
             if (!_spawnedEnemies.Contains(newEnemy))
             {
                 _spawnedEnemies.Add(newEnemy);
             }
-
-            newEnemy.SetEnemyCanAttack(false);
+                        
             newEnemy.transform.position = _enemyPaths[lastPath-1].position;
             newEnemy.SetTargetPos(_enemyPaths[lastPath].position);
             newEnemy.SetCurrentPathIndex(lastPath);
+            newEnemy.SetEnemyCanAttack(false);
             newEnemy.gameObject.SetActive(true);
 
         }        
