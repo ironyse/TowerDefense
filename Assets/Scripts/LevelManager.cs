@@ -14,8 +14,10 @@ public class LevelManager : MonoBehaviour
             return _instance;
         }
     }
-        
+
     [SerializeField] private int _maxLives = 3;
+    [SerializeField] private int _maxEnergies = 6;
+    [SerializeField] private int _startingEnergy = 2;
     [SerializeField] private int _totalEnemy = 15;
 
     [SerializeField] private GameObject _panel;
@@ -25,25 +27,32 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private Transform _towerUIParent;
     [SerializeField] private GameObject _towerUIPrefab;
+    [SerializeField] private Transform _notifierPrefab;
 
     [SerializeField] private Tower[] _towerPrefabs;
-    [SerializeField] private Enemy[] _enemyPrefabs;
+    [SerializeField] private Enemy[] _enemyPrefabs;    
 
     [SerializeField] private Transform[] _enemyPaths;
     [SerializeField] private float _spawnDelay = 5f;
+    [SerializeField] private float _energyRechargeDelay = 4f;
 
     private List<Tower> _spawnedTowers = new List<Tower>();
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
     private List<Bullet> _spawnedBullets = new List<Bullet>();
+    [SerializeField] private List<Energy> _shownedEnergy = new List<Energy>();
 
-    private int _currentLives;
+    private int _currentLives;    
     private int _enemyCounter;
     private float _runningSpawnDelay;
-
+    private float _runningRechargeDelay;
+    
+    public int CurrentEnergy { get; private set; }
     public bool IsOver { get; private set; }
+    public Transform NotifierPrefab { get { return _notifierPrefab; } }
 
     void Start(){
         SetCurrentLives(_maxLives);
+        SetCurrentEnergy(_startingEnergy);
         SetTotalEnemy(_totalEnemy);
         InstantiateAllTowerUI();
     }
@@ -56,6 +65,7 @@ public class LevelManager : MonoBehaviour
         if (IsOver) return;
         
         _runningSpawnDelay -= Time.unscaledDeltaTime;
+        _runningRechargeDelay -= Time.unscaledDeltaTime;
 
         //Spawn enemies
         if (_runningSpawnDelay <= 0f){
@@ -63,6 +73,13 @@ public class LevelManager : MonoBehaviour
             SpawnEnemy();
             _runningSpawnDelay = _spawnDelay;
         }
+
+        if (_runningRechargeDelay <= 0f && CurrentEnergy < _maxEnergies)
+        {
+            RechargeEnergy();
+            _runningRechargeDelay = _energyRechargeDelay;
+        }
+
 
         foreach(Enemy enemy in _spawnedEnemies) {
             if (!enemy.gameObject.activeSelf) {
@@ -129,13 +146,9 @@ public class LevelManager : MonoBehaviour
         newEnemy.gameObject.SetActive(true);
     }
 
-    void OnDrawGizmos(){
-        
-        for (int i = 0; i< _enemyPaths.Length -1; i++) {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(_enemyPaths[i].position, _enemyPaths[i + 1].position);
-        }
-    }
+    void RechargeEnergy(){
+        SetCurrentEnergy(++CurrentEnergy);
+    }    
 
     public void RegisterSpawnedTower(Tower tower) {
         _spawnedTowers.Add(tower);
@@ -187,5 +200,31 @@ public class LevelManager : MonoBehaviour
 
         _statusInfo.text = isWin ? "You Win!" : "You Lose!";
         _panel.gameObject.SetActive(true);
+    }
+
+    public void SetCurrentEnergy(int value){
+        CurrentEnergy = Mathf.Max(value, 0);
+        foreach(Energy energy in _shownedEnergy) {
+            energy.transform.GetChild(0).gameObject.SetActive(false);
+        }
+
+        for(int i=0; i < CurrentEnergy; i++) {
+            _shownedEnergy[i].transform.GetChild(0).gameObject.SetActive(true);
+        }
+        
+    }
+
+    public void ReduceEnergy(int value) {
+        SetCurrentEnergy(CurrentEnergy - value);
+    }
+    
+    void OnDrawGizmos()
+    {
+
+        for (int i = 0; i < _enemyPaths.Length - 1; i++)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(_enemyPaths[i].position, _enemyPaths[i + 1].position);
+        }
     }
 }

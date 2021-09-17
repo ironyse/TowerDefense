@@ -93,6 +93,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8564155230169592127, guid: f2b3efd6d3b496644ab263efec48ab03,
         type: 3}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _energyCost
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3398961711962099178, guid: 4c51351ec37be624caa41a9ba16a79a6,
         type: 3}
       propertyPath: m_Sprite

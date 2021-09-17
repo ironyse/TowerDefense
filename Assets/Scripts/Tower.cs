@@ -8,17 +8,19 @@ public class Tower : MonoBehaviour
     [SerializeField] private SpriteRenderer _towerHead;
 
     // Properti
+    [SerializeField] private int _energyCost = 1; // cost for build tower
     [SerializeField] private int _shootPower = 1;
     [SerializeField] private float _shootDistance = 1f;
     [SerializeField] private float _shootDelay = 5f;
     [SerializeField] private float _bulletSpeed = 1f;
-    [SerializeField] private float _bulletSplashRadius = 0f;
-
+    [SerializeField] private float _bulletSplashRadius = 0f;    
 
     [SerializeField] private Bullet _bulletPrefab;
     private float _runningShootDelay;
     private Enemy _targetEnemy;
     private Quaternion _targetRotation;
+
+    public int EnergyCost { get { return _energyCost; } }
 
     public Sprite GetTowerHeadIcon(){
         return _towerHead.sprite;

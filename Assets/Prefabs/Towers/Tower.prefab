@@ -97,11 +97,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerPlace: {fileID: 6470468852148750846}
   _towerHead: {fileID: 3398961711962099178}
+  _energyCost: 1
   _shootPower: 1
   _shootDistance: 5
   _shootDelay: 5
   _bulletSpeed: 4
   _bulletSplashRadius: 0
+  _bulletPrefab: {fileID: 0}
 --- !u!50 &9147950048156804386
 Rigidbody2D:
   serializedVersion: 4

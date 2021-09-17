@@ -98,6 +98,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7708920203761876422, guid: 55ffb7f700a4bce4a8035f9deb6521ef,
         type: 3}
+    - target: {fileID: 1634997807641485285, guid: 4c51351ec37be624caa41a9ba16a79a6,
+        type: 3}
+      propertyPath: _energyCost
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c51351ec37be624caa41a9ba16a79a6, type: 3}
 --- !u!212 &375371009007167937 stripped
