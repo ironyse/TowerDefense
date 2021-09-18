@@ -2,11 +2,11 @@
 
 public class TowerPlacement : MonoBehaviour
 {
-    [SerializeField] private Tower _placedTower;    
+    private Tower _placedTower;
     
+    // Using OnTriggerStay to check secara berkala(tidak hanya sekali) kalau tower yang terpasang hancur
     private void OnTriggerStay2D(Collider2D collision) {        
-        if (_placedTower != null && !_placedTower.placed && _placedTower.IsDestroyed) {
-            Debug.Log("Trigger");
+        if (_placedTower != null && _placedTower.placed && _placedTower.IsDestroyed) {            
             _placedTower = null;
             return;
         }

@@ -23,7 +23,7 @@ public class AirStrikeUI : MonoBehaviour, IPointerClickHandler
             _airStrike.SetOnStrike();
             LevelManager.Instance.ReduceEnergy(_airStrikeCost);
         } else {
-            Notifier.Show("Not Enough Energy!",new Vector3(0f, -2f, 0f));
+            Notifier.Show(_airStrike.IsStriking ? "Not Ready!":"Not Enough Energy!",new Vector3(0f, -2f, 0f));
         }
     }
 }

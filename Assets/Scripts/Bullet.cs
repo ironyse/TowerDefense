@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour
             gameObject.SetActive(false);
 
             if (_bulletSplashRadius > 0f) {
-                LevelManager.Instance.ExplodeAt(transform.position, _bulletSplashRadius, _bulletPower);
+                LevelManager.Instance.ExplodeAt(_bulletTarget.transform.position, _bulletSplashRadius, _bulletPower);
             } else {
                 _bulletTarget.ReduceHealth(_bulletPower);
             }
