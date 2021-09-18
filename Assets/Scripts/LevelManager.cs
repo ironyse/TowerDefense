@@ -80,7 +80,7 @@ public class LevelManager : MonoBehaviour
         //Spawn enemies
         if (_runningSpawnDelay <= 0f){
             //Spawn enemy
-            SpawnEnemy();
+            SpawnEnemy(_enemyPaths[0].position);
             _runningSpawnDelay = _spawnDelay;
         }
 
@@ -139,7 +139,7 @@ public class LevelManager : MonoBehaviour
     }
 
     // change to public so the method can be used by other object(when enemy dies, it spawn another enemy)
-    public void SpawnEnemy(Enemy enemy = null, int lastPath = 0) {        
+    public void SpawnEnemy(Vector2 lastPos,Enemy enemy = null, int lastPath = 0) {        
         string enemyString;
         Enemy enemyPrefab;
 
@@ -176,9 +176,9 @@ public class LevelManager : MonoBehaviour
             _spawnedEnemies.Add(newEnemy); 
         }
 
-        newEnemy.transform.position = _enemyPaths[lastPath].position;
-        newEnemy.SetTargetPos(_enemyPaths[lastPath+1].position);
-        newEnemy.SetCurrentPathIndex(lastPath+1);
+        newEnemy.transform.position = lastPos;
+        newEnemy.SetTargetPos(_enemyPaths[lastPath].position);
+        newEnemy.SetCurrentPathIndex(lastPath);
         newEnemy.SetEnemyCanAttack(canAttack); 
         newEnemy.gameObject.SetActive(true);
     }

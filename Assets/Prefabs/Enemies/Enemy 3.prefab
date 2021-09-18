@@ -114,17 +114,17 @@ PrefabInstance:
     - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}
       propertyPath: _maxHealth
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}
       propertyPath: _shootPower
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}
       propertyPath: _moveSpeed
-      value: 0.75
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}
@@ -157,6 +157,11 @@ PrefabInstance:
       propertyPath: _enemyHead
       value: 
       objectReference: {fileID: 2968747545121380388}
+    - target: {fileID: 9170265755110990249, guid: 0916f0657fc6101459344de5a6cab80d,
+        type: 3}
+      propertyPath: _shootDelay
+      value: 6.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9123141888111386301, guid: 0916f0657fc6101459344de5a6cab80d,
         type: 3}
       propertyPath: m_Sprite

@@ -79,8 +79,8 @@ public class Tower : MonoBehaviour
             if (distance > _shootDistance) {
                 continue;
             }
-
-            if (distance < nearestDistance) {
+            // adding statement, because the tower still targeting inactive enemy game object
+            if (distance < nearestDistance && enemy.gameObject.activeSelf) {
                 nearestDistance = distance;
                 nearbyEnemy = enemy;
             }
@@ -91,7 +91,7 @@ public class Tower : MonoBehaviour
     }
 
     public void ShootTarget() {
-        if (_targetEnemy == null) return;
+        if (_targetEnemy == null) return;        
 
         _runningShootDelay -= Time.unscaledDeltaTime;
         if (_runningShootDelay <= 0f) {
@@ -109,7 +109,7 @@ public class Tower : MonoBehaviour
     }
 
     public void SeekTarget() {
-        if (_targetEnemy == null) return;
+        if (_targetEnemy == null) return;        
 
         Vector3 direction = _targetEnemy.transform.position - transform.position;
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

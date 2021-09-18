@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void MoveToTarget(){
+        _targetTower = null;
         transform.position = Vector3.MoveTowards(transform.position, TargetPos, _moveSpeed * Time.deltaTime);
     }    
 
@@ -89,7 +90,7 @@ public class Enemy : MonoBehaviour
             AudioPlayer.Instance.PlaySFX("enemy-die");
             if (_canSpawningEnemies)
             {
-                LevelManager.Instance.SpawnEnemy(_spawnedType, CurrentPathIndex);
+                LevelManager.Instance.SpawnEnemy(transform.position,_spawnedType, CurrentPathIndex);
             }
         }
         float fillRatio = (float) _currentHealth / _maxHealth;
@@ -124,7 +125,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void ShootTarget() {
-        if (_targetTower == null) return;
+        if (_targetTower == null) return;        
 
         _runningShootDelay -= Time.unscaledDeltaTime;
         if (_runningShootDelay <= 0f) {
@@ -142,7 +143,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void SeekTarget() {
-        if (_targetTower == null) return;
+        if (_targetTower == null) return;        
 
         Vector3 direction = _targetTower.transform.position - transform.position;
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
