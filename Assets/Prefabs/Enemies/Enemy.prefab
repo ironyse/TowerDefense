@@ -229,7 +229,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9576d2b078928154f960dfc2754e0a3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -255,8 +255,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 1
   _moveSpeed: 1
+  _shootPower: 1
+  _shootDistance: 1
+  _shootDelay: 5
+  _bulletSpeed: 1
+  _canAttacking: 0
+  _canSpawningEnemies: 0
+  _spawnNumber: 0
+  _spawnedType: {fileID: 0}
+  _enemyHead: {fileID: 0}
   _healthBar: {fileID: 1662820763081018249}
   _healthFill: {fileID: 3882420080590556447}
+  _bulletPrefab: {fileID: 0}
 --- !u!61 &3766474187476179234
 BoxCollider2D:
   m_ObjectHideFlags: 0

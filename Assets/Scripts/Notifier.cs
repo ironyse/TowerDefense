@@ -3,19 +3,38 @@ using TMPro;
 
 public class Notifier : MonoBehaviour
 {
-    public static Notifier Show(Vector3 position) {
-        Transform notifierTransform = Instantiate(LevelManager.Instance.NotifierPrefab, position, Quaternion.identity);
-        Notifier notifier = notifierTransform.GetComponent<Notifier>();
-        return notifier;
+    private static TextMeshPro textMesh;
+
+    private static float disapperTimer = 1f;
+    private static Color textColor;    
+
+    private static Notifier _instance = null;
+
+    public static Notifier Show(string text, Vector3 position) {
+        if (_instance == null) {
+            Transform notifierTransform = Instantiate(LevelManager.Instance.NotifierPrefab, position, Quaternion.identity);
+            _instance = notifierTransform.GetComponent<Notifier>();
+        } else
+        {
+            _instance.gameObject.SetActive(false);
+        }
+
+        textMesh.text = text;                     
+        _instance.gameObject.SetActive(true);
+        
+        return _instance;
     }
 
-    private TextMeshPro textMesh;
-    private float disapperTimer = 1f;
-    private Color textColor;
+    private void OnEnable()
+    {
+        textColor.a = 1;
+        disapperTimer = 1f;
+        textMesh.color = textColor;
+    }
 
     private void Awake() {
         textMesh = transform.GetComponent<TextMeshPro>();
-        textColor = textMesh.color;
+        textColor = textMesh.color;  
     }
 
     void Update() {
@@ -25,7 +44,7 @@ public class Notifier : MonoBehaviour
             textColor.a -= disappearSpeed * Time.deltaTime;
             textMesh.color = textColor;
             if (textColor.a < 0) {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }

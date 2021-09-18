@@ -28,18 +28,21 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform _towerUIParent;
     [SerializeField] private GameObject _towerUIPrefab;
     [SerializeField] private Transform _notifierPrefab;
+    [SerializeField] private GameObject _explosionPrefab;
 
     [SerializeField] private Tower[] _towerPrefabs;
     [SerializeField] private Enemy[] _enemyPrefabs;    
 
-    [SerializeField] private Transform[] _enemyPaths;
+    [SerializeField] private Transform[] _enemyPaths;    
     [SerializeField] private float _spawnDelay = 5f;
     [SerializeField] private float _energyRechargeDelay = 4f;
 
+    [SerializeField] private List<Energy> _shownedEnergy = new List<Energy>();
+
     private List<Tower> _spawnedTowers = new List<Tower>();
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
-    private List<Bullet> _spawnedBullets = new List<Bullet>();
-    [SerializeField] private List<Energy> _shownedEnergy = new List<Energy>();
+    private List<Bullet> _spawnedBullets = new List<Bullet>();    
+    private List<GameObject> _explosions = new List<GameObject>();
 
     private int _currentLives;    
     private int _enemyCounter;
@@ -111,7 +114,6 @@ public class LevelManager : MonoBehaviour
                     enemy.SeekTarget();
                     enemy.ShootTarget();
                 }
-                
                 
             }
 
@@ -189,8 +191,7 @@ public class LevelManager : MonoBehaviour
     }    
 
     public void RegisterSpawnedTower(Tower tower) {
-        _spawnedTowers.Add(tower);
-        
+        _spawnedTowers.Add(tower);        
     }
 
     public void UnRegisterSpawnedTower(Tower tower) {
@@ -216,11 +217,21 @@ public class LevelManager : MonoBehaviour
             if (enemy.gameObject.activeSelf) {
 
                 if (Vector2.Distance(enemy.transform.position, point) <= radius) {
-                    enemy.ReduceHealth(damage);
+                    enemy.ReduceHealth(damage, true);
                 }
             }
         }
 
+        GameObject explosionObj = _explosions.Find(e => !e.gameObject.activeSelf && e.name.Contains("Explosion"))?.gameObject;
+        if (explosionObj == null) {
+            explosionObj = Instantiate(_explosionPrefab);
+        }
+        if (!_explosions.Contains(explosionObj)) {
+            _explosions.Add(explosionObj);
+        }
+
+        explosionObj.transform.position = point;
+        explosionObj.SetActive(true);
     }
 
     public void ReducesLives (int value) {
@@ -268,6 +279,6 @@ public class LevelManager : MonoBehaviour
         {
             Gizmos.color = Color.cyan;
             Gizmos.DrawLine(_enemyPaths[i].position, _enemyPaths[i + 1].position);
-        }
+        }        
     }
 }

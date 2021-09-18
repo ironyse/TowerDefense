@@ -18,12 +18,15 @@ public class Tower : MonoBehaviour
     [SerializeField] private float _bulletSpeed = 1f;
     [SerializeField] private float _bulletSplashRadius = 0f;
 
-    [SerializeField] private Bullet _bulletPrefab;
+    [SerializeField] private Bullet _bulletPrefab;    
+
     private float _runningShootDelay;
     private Enemy _targetEnemy;
     private Quaternion _targetRotation;
-    private int _currentHealth;
+    private int _currentHealth;    
+    public bool placed;
 
+    public bool IsDestroyed { get; private set; }
     public int EnergyCost { get { return _energyCost; } }
 
     public Sprite GetTowerHeadIcon(){
@@ -36,10 +39,15 @@ public class Tower : MonoBehaviour
         PlacePos = newPos;
     }
 
+    public void SetDestroyed(bool destroyed) {
+        IsDestroyed = destroyed;
+    }
+
     public void LockPlacement() {
         transform.position = (Vector2)PlacePos;
         _currentHealth = _maxHealth;
         _healthFill.size = _healthBar.size;
+        placed = true;
     }
 
     public void ToggleOrderInLayer(bool toFront) {
@@ -52,10 +60,10 @@ public class Tower : MonoBehaviour
         _currentHealth -= damage;
         
         if(_currentHealth <= 0) {
-            _currentHealth = 0;
+            _currentHealth = 0;            
+            IsDestroyed = true;            
             gameObject.SetActive(false);
-            LevelManager.Instance.UnRegisterSpawnedTower(transform.GetComponent<Tower>());
-            
+            LevelManager.Instance.UnRegisterSpawnedTower(transform.GetComponent<Tower>());            
         }
 
         float fillRatio = (float)_currentHealth / _maxHealth;

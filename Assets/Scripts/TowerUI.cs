@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -6,7 +7,7 @@ public class TowerUI : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHa
 {
     [SerializeField] private Image _towerIcon;
     private Tower _towerPrefab;
-    private Tower _currentSpawnedTower;
+    private Tower _currentSpawnedTower;     
 
     public void SetTowerPrefab(Tower tower){
         _towerPrefab = tower;
@@ -16,18 +17,21 @@ public class TowerUI : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHa
     public void OnBeginDrag(PointerEventData eventData){        
 
         // Check if current energy is greater than or equals tower's energy cost than continue the code 
-        if (LevelManager.Instance.CurrentEnergy >= _towerPrefab.EnergyCost) {
+        if (LevelManager.Instance.CurrentEnergy >= _towerPrefab.EnergyCost) {            
+            
             GameObject newTowerObj = Instantiate(_towerPrefab.gameObject);
             _currentSpawnedTower = newTowerObj.GetComponent<Tower>();
+            _currentSpawnedTower.SetPlacePos(null);            
             _currentSpawnedTower.ToggleOrderInLayer(true);
         } else {
-            Notifier.Show(new Vector3(0f, -2f, 0f));
+            Notifier.Show("Not Enough Energy!", new Vector3(0f, -2f, 0f));
         }
         
     }
 
     public void OnDrag(PointerEventData eventData){
         if (!_currentSpawnedTower) return; 
+
         Camera mainCamera = Camera.main;
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = -mainCamera.transform.position.z;
@@ -37,10 +41,13 @@ public class TowerUI : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHa
     }
 
     public void OnEndDrag(PointerEventData eventData){
-        if (!_currentSpawnedTower) return;
+        if (!_currentSpawnedTower) return;        
+
         if (_currentSpawnedTower.PlacePos == null) {
+            Notifier.Show("Can't be placed!", new Vector3(0f, -2f, 0f));            
             Destroy(_currentSpawnedTower.gameObject);
-        } else{
+            
+        } else{            
             _currentSpawnedTower.LockPlacement();
             _currentSpawnedTower.ToggleOrderInLayer(false);
             LevelManager.Instance.RegisterSpawnedTower(_currentSpawnedTower);

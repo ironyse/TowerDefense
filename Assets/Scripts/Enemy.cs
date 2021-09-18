@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void MoveToTarget(){
-        _targetTower = null;
+        _targetTower = null; //Reset target everytime it move to targeting the nearest tower
         transform.position = Vector3.MoveTowards(transform.position, TargetPos, _moveSpeed * Time.deltaTime);
     }    
 
@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
         CurrentPathIndex = currentIndex;
     }
 
-    public void ReduceHealth(int damage) {
+    public void ReduceHealth(int damage, bool fromExplosion = false) {
         _currentHealth -= damage;        
         AudioPlayer.Instance.PlaySFX("hit-enemy");
 
@@ -88,8 +88,7 @@ public class Enemy : MonoBehaviour
             _currentHealth = 0;
             gameObject.SetActive(false);
             AudioPlayer.Instance.PlaySFX("enemy-die");
-            if (_canSpawningEnemies)
-            {
+            if (_canSpawningEnemies && !fromExplosion) {
                 LevelManager.Instance.SpawnEnemy(transform.position,_spawnedType, CurrentPathIndex);
             }
         }
