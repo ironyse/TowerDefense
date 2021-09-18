@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour
             AudioPlayer.Instance.PlaySFX("enemy-die");
             if (_canSpawningEnemies)
             {
-                LevelManager.Instance.SpawnEnemyType(_spawnedType, _spawnNumber, CurrentPathIndex);
+                LevelManager.Instance.SpawnEnemy(_spawnedType, CurrentPathIndex);
             }
         }
         float fillRatio = (float) _currentHealth / _maxHealth;

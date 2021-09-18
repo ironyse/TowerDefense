@@ -138,22 +138,37 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void SpawnEnemy(int lastPath = 0) {
-        SetTotalEnemy(--_totalEnemy);
-        if (_enemyCounter < 0) {
-            bool isAllEnemyDestroyed = _spawnedEnemies.Find(e => e.gameObject.activeSelf) == null;
-            if (isAllEnemyDestroyed) SetGameOver(true);
+    // change to public so the method can be used by other object(when enemy dies, it spawn another enemy)
+    public void SpawnEnemy(Enemy enemy = null, int lastPath = 0) {        
+        string enemyString;
+        Enemy enemyPrefab;
 
-            return;
+        bool canAttack; // enemy that spawned by other enemy can't attack
+
+        if (enemy == null) {
+
+            SetTotalEnemy(--_totalEnemy);
+            if (_enemyCounter < 0) {
+                bool isAllEnemyDestroyed = _spawnedEnemies.Find(e => e.gameObject.activeSelf) == null;
+                if (isAllEnemyDestroyed) SetGameOver(true);
+
+                return;
+            }
+            int randomIndex = Random.Range(0, _enemyPrefabs.Length);
+            enemyString = (randomIndex + 1).ToString();
+            enemyPrefab = _enemyPrefabs[randomIndex];
+            canAttack = true;
+        } else {
+            enemyString = enemy.name;
+            enemyPrefab = enemy;
+            canAttack = false;
         }
-        int randomIndex = Random.Range(0, _enemyPrefabs.Length);
-        string enemyIndexString = (randomIndex + 1).ToString();
 
-        GameObject newEnemyObj = _spawnedEnemies.Find(e => !e.gameObject.activeSelf && e.name.Contains(enemyIndexString))?.gameObject;
+        GameObject newEnemyObj = _spawnedEnemies.Find(e => !e.gameObject.activeSelf && e.name.Contains(enemyString))?.gameObject;
 
         if (newEnemyObj == null) {
 
-            newEnemyObj = Instantiate(_enemyPrefabs[randomIndex].gameObject);
+            newEnemyObj = Instantiate(enemyPrefab.gameObject);
         }
 
         Enemy newEnemy = newEnemyObj.GetComponent<Enemy>();
@@ -164,34 +179,10 @@ public class LevelManager : MonoBehaviour
         newEnemy.transform.position = _enemyPaths[lastPath].position;
         newEnemy.SetTargetPos(_enemyPaths[lastPath+1].position);
         newEnemy.SetCurrentPathIndex(lastPath+1);
+        newEnemy.SetEnemyCanAttack(canAttack); 
         newEnemy.gameObject.SetActive(true);
     }
-
-    public void SpawnEnemyType(Enemy enemy, int spawnNumber, int lastPath) {
-        for(int i=0; i<spawnNumber; i++)
-        {
-            GameObject newEnemyObj = _spawnedEnemies.Find(e => !e.gameObject.activeSelf && e.name.Contains(enemy.name))?.gameObject;
-
-            if (newEnemyObj == null)
-            {
-                newEnemyObj = Instantiate(enemy.gameObject);
-            }
-
-            Enemy newEnemy = newEnemyObj.GetComponent<Enemy>();
-            if (!_spawnedEnemies.Contains(newEnemy))
-            {
-                _spawnedEnemies.Add(newEnemy);
-            }
-                        
-            newEnemy.transform.position = _enemyPaths[lastPath-1].position;
-            newEnemy.SetTargetPos(_enemyPaths[lastPath].position);
-            newEnemy.SetCurrentPathIndex(lastPath);
-            newEnemy.SetEnemyCanAttack(false);
-            newEnemy.gameObject.SetActive(true);
-
-        }        
-
-    }
+    
 
     void RechargeEnergy(){
         SetCurrentEnergy(++CurrentEnergy);
