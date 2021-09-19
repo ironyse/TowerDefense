@@ -4,11 +4,10 @@ public class TowerPlacement : MonoBehaviour
 {
     private Tower _placedTower;
     
-    // Using OnTriggerStay to check secara berkala(tidak hanya sekali) kalau tower yang terpasang hancur
-    private void OnTriggerStay2D(Collider2D collision) {        
+    
+    private void OnTriggerEnter2D(Collider2D collision) {        
         if (_placedTower != null && _placedTower.placed && _placedTower.IsDestroyed) {            
-            _placedTower = null;
-            return;
+            _placedTower = null;            
         }
 
         if (_placedTower == null) {
