@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: dbf7617fd30b0804c86361caa2bfff96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -93,9 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34dcf54e53a2cb5489b5e521c9fcecb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionDamage: 3
-  _explosionRange: 2
-  _moveSpeed: 1
+  _explosionDamage: 4
+  _explosionRange: 1.75
+  _moveSpeed: 3
   _airStrikePaths:
   - {fileID: 0}
   - {fileID: 0}
@@ -104,6 +104,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _defaultPos: {x: 0, y: 2, z: 50}
 --- !u!1 &6412256884720170489
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +172,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d2361f76774657346b18b2fabd98ec80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1

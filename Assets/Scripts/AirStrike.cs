@@ -21,8 +21,7 @@ public class AirStrike : MonoBehaviour
         CurrentPathIndex = 0;
     }
 
-    void Update()
-    {
+    void FixedUpdate() {
         if (LevelManager.Instance.IsOver || !IsStriking) return;
 
         if (Vector2.Distance(transform.position, TargetPos) < 0.1f){
